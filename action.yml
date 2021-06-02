@@ -1,0 +1,20 @@
+name: "Upload file to AnonFiles"
+author: "SiegeWizard"
+description: "Upload file to AnonFiles.com"
+inputs:
+  file:
+    description: "The file to upload"
+    required: true
+outputs:
+  url:
+    description: "Url to the uploaded file"
+  short:
+    description: "Short url to the uploaded file"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.file }}
+branding:
+  color: "gray-dark"
+  icon: "share"
