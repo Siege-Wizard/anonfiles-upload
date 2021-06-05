@@ -8,8 +8,6 @@ inputs:
 outputs:
   url:
     description: "Url to the uploaded file"
-  short:
-    description: "Short url to the uploaded file"
 runs:
   using: "docker"
   image: "Dockerfile"

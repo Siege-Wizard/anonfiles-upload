@@ -6,6 +6,7 @@ import os
 import sys
 
 import requests
+from requests_toolbelt import MultipartEncoder
 
 
 URL = 'https://api.anonfiles.com/upload'
@@ -37,13 +38,17 @@ if __name__ == '__main__':
     # Uploading the file
     with open(filename, 'rb') as file:
         print(f"Uploading {filename} ...")
-        response = json.loads(requests.post(url, files={'file': file}).text)
+        mpe = MultipartEncoder({'file': (filename, file)})
+        response = json.loads(requests.post(
+            url,
+            data=mpe,
+            headers={'Content-Type': mpe.content_type}
+        ).text)
 
         if response['status']:
-            urls = response['data']['file']['url']
-            print(f"Filed uploaded successfully to {urls['full']}")
-            print(f"::set-output name=url::{urls['full']}")
-            print(f"::set-output name=short::{urls['short']}")
+            url = response['data']['file']['url']['full']
+            print(f"Filed uploaded successfully to {url}")
+            print(f"::set-output name=url::{url}")
         else:
             print(f"ERROR: {response['error']['message']}")
             sys.exit(1)

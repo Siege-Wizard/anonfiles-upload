@@ -24,5 +24,4 @@ This GitHub action allows you to upload a file to anonfiles.com.
 
 ### Outputs
 
-- `url`: Full url of the uploaded file.
-- `short`: Short url version of the uploaded file.
+- `url`: Url of the uploaded file.
