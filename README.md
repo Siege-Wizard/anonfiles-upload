@@ -22,7 +22,6 @@ This GitHub action allows you to upload a file to anonfiles.com.
 - `ANONFILES_TOKEN`: If provided, the file will be uploaded to the 
   corresponding account instead.
 
-### Outputs
+**Outputs:**
 
-- `url`: Full url of the uploaded file.
-- `short`: Short url version of the uploaded file.
+- `url`: Url of the uploaded file.
